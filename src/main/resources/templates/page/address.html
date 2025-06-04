@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>META</title>
+    <link rel="shortcut icon" type="image/png" href="assets/images/logos/unnamed.png" />
     <link rel="stylesheet" th:href="@{/web/dist/css/style.css}">
     <link rel="stylesheet" th:href="@{/web/libs/fontawesome-free-6.4.2-web/css/all.css}">
     <link rel="stylesheet" th:href="@{/web/libs/bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.css}">
@@ -189,10 +190,10 @@
                                     <span class="text-danger fw-bold"
                                           th:text="${#numbers.formatDecimal(obj.gia, 0, 'COMMA', 0, 'POINT')} + ' đ'"
                                           style="color: red; font-weight: bold; font-size: 16px;">
-    0 đ
-</span>
-<!--                                    <span th:text="${obj.gia}" ></span>-->
-                                    <span style="color: red; font-weight: bold; font-size: 18px;">đ</span>
+                                        0 đ
+                                    </span>
+
+
                                 </div>
                                 <div class="pm-qty">
                                     <div class="dpv-amg">
