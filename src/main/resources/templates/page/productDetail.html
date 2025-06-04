@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>META</title>
+    <link rel="stylesheet" th:href="@{/web/dist/css/style.css}">
+    <link rel="stylesheet" th:href="@{/web/libs/fontawesome-free-6.4.2-web/css/all.css}">
+    <link rel="stylesheet" th:href="@{/web/libs/bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.css}">
+    <link rel="preconnect" href="web/https://fonts.googleapis.com">
+    <link rel="preconnect" href="web/https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="wapper">
+        <header>
+            <div class="header">
+                <div class="logo">
+                    <a href="/page" class="text-white text-decoration-none">META</a>
+                </div>
+                <div class="search">
+                    <div class="input-group">
+                        <input id="search1" type="text" class="form-control" placeholder="Tìm kiếm...">
+                        <button id="search2" class="btn btn-primary" type="button">Tìm kiếm</button>
+                    </div>
+                </div>
+                <div class="cart">
+                    <a href="#" class="text-white text-decoration-none"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+                    <div class="cart-box">
+                        <ul class="cart-items">
+                        <li>
+                            <img src="img/product1.jpg" alt="">
+                            <div class="info">
+                            <p>Sản phẩm A</p>
+                            <span>1 x 150.000đ</span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="img/product2.jpg" alt="">
+                            <div class="info">
+                            <p>Sản phẩm B</p>
+                            <span>2 x 200.000đ</span>
+                            </div>
+                        </li>
+                        </ul>
+                        <div class="cart-total">Tổng: <strong>550.000đ</strong></div>
+                        <a href="#" class="btn-view-cart">Xem giỏ hàng</a>
+                    </div>
+                </div>
+                <div class="hotline">
+                    <a href="#" class="text-white text-decoration-none"> <i class="fa-solid fa-phone"></i>
+                    Hotline</a>
+                    <div class="hotline-box">
+                        <p><strong>1900 1234</strong></p>
+                        <p>Hỗ trợ 24/7</p>
+                        <p>(08:00 - 21:00)</p>
+                    </div>
+                </div>
+                <div class="login">
+                    <a href="#" class="text-white text-decoration-none"><i class="fa-solid fa-user-tie"></i>
+                    Đăng nhập</a>
+                    <div class="login-box">
+                        <ul>
+                            <li><a href="#">Tra cứu đơn hàng</a></li>
+                            <li><a href="#">Lịch sử mua hàng</a></li>
+                            <li><a href="#">Lấy mã khuyến mãi</a></li>
+                            <li><a href="#">Sản phẩm đã xem</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+
+
+        <div class="detail-product-view" th:each="obj : ${sanphamdetail}">
+            <div class="dpv-left">
+                <img th:src="${obj.hinhanh}" alt="">
+            </div>
+            <div class="dpv-right">
+                <div class="dpv-name">
+                    <h3 th:text="${obj.tensanpham}"></h3>
+                </div>
+                
+                <div class="lz-rate">
+                    <p class="text-warning mb-0" style="font-size: 11px;">
+                    <i class="fas fa-star me-0"></i>
+                    <i class="fas fa-star me-0"></i>
+                    <i class="fas fa-star me-0"></i>
+                    <i class="fas fa-star me-0"></i>
+                    <i class="fas fa-star-half-alt me-0"></i>
+                    <span class="text-muted ms-2">(50)</span>
+                    </p>
+                </div>
+                <div class="dpv-brand">
+                    Thương hiệu: 
+                    <span th:text="${obj.thuonghieu}">Sharp</span>
+                </div>
+                <div class="dpv-price">
+                    <span class="text-danger fw-bold"
+                          th:text="${#numbers.formatDecimal(obj.gia, 0, 'COMMA', 0, 'POINT')} + ' đ'">
+    0 đ
+</span>
+                    <span class="price2">6.000.000đ</span>
+                </div>
+                <div class="dpv-stt">
+                    Trạng thái:
+                    <span>Còn hàng</span>
+                </div>
+                <div class="dpv-amg">
+                    <span>Chọn số lượng: </span>
+                    <span class="quantity-wrapper">
+                        <button type="button" onclick="changeQuantity(this, -1)">−</button>
+                        <input type="text" id="quantityInput" value="1" step="1" min="1" max="10">
+                       <button type="button" onclick="changeQuantity(this, 1)">+</button>
+                    </span>
+                </div>
+                <div class="dpv-shopping">
+                    <div class="shopping-left">
+                        <a th:href="@{/address/{id}(id=${sanphamdetail.id})}">
+                            <div class="iconshop">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                            <div class="nameshop">
+                                <span class="nameshop1">Đặt mua</span>
+                                <p>Giao hàng toàn quốc</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="shopping-right">
+                        <a href="">
+                            <div class="iconshop">
+                                <i class="fa-solid fa-headphones-simple"></i>
+                            </div>
+                            <div class="nameshop">
+                                <span class="nameshop2">Tư vấn</span>
+                                <p>Chúng tôi sẽ gọi lại tư vấn</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-freeship">
+                    <div class="sf-ttt">
+                        <p>Miễn phí giao hàng trong nội thành Hà Nội và nội thành TP. Hồ Chí Minh. </p>
+                    </div>
+                    <div class="sf-tt">
+                        <p>Bảo hành <strong>chính hãng</strong>, có người đến tận nhà</p>
+                    </div>
+                    <div class="sf-tt">
+                        <p>Thanh toán bằng Zalopay qua cổng thanh toán ONEPAY, nhận ưu đãi
+                            <br>
+                            🔹Mã 
+                            <strong>ZLPOP20</strong>
+                            giảm 20.000đ cho hóa đơn từ 100.000đ. 
+                            <br>
+                            🔹Mã 
+                            <strong>ZALOPAY30</strong>
+                            giảm 50% tối đa 30.000đ.
+                        </p>
+                    </div>
+                    <div class="sf-tt">
+                        
+                        <p>Bảo hành toàn quốc</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="pd-Spe">
+            <div class="ps-main">
+                <div class="tt-sp">
+                    <h2>Thông số kĩ thuật</h2>
+                </div>
+                <div class="ps-body">
+                    <ul class="info-list">
+                        <li>
+                            <span>Kiểu tủ lạnh</span>
+                            <span class="li-tt-sp2">Tủ lạnh 2 cánh</span>
+                        </li>
+                        <li>
+                            <span>Số cửa</span>
+                            <span class="li-tt-sp2">2 cửa</span>
+                        </li>
+                        <li>
+                            <span>Số người sử dụng</span>
+                            <span class="li-tt-sp2">2 - 3 người</span>
+                        </li>
+                        <li>
+                            <span>Chất liệu khay</span>
+                            <span class="li-tt-sp2">Ngăn mát (Kính chịu lực)</span>
+                        </li>
+                        <li>
+                            <span>Chất liệu bên ngoài</span>
+                            <span class="li-tt-sp2">Cửa (Nhựa ABS)</span>
+                        </li>
+                        <li>
+                            <span>Màu sắc </span>
+                            <span class="li-tt-sp2">Đen</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tt-sp">
+                    <h2>Dung tích</h2>
+                </div>
+                <div class="ps-body">
+                    <ul class="info-list">
+                        <li>
+                            <span>Dung tích tổng</span>
+                            <span class="li-tt-sp2">215 lít</span>
+                        </li>
+                        <li>
+                            <span>Dung tích sử dụng</span>
+                            <span class="li-tt-sp2">197 lít</span>
+                        </li>
+                        <li>
+                            <span>Ngăn lạnh</span>
+                            <span class="li-tt-sp2">145 lít</span>
+                        </li>
+                        <li>
+                            <span>Ngăn đá</span>
+                            <span class="li-tt-sp2">52 lít</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tt-sp">
+                    <h2>Xuất sứ & Bảo hành</h2>
+                </div>
+                <div class="ps-body">
+                    <ul class="info-list">
+                        <li>
+                            <span>Năm ra mắt</span>
+                            <span class="li-tt-sp2">2023</span>
+                        </li>
+                        <li>
+                            <span>Thương hiệu</span>
+                            <span class="li-tt-sp2">Sharp</span>
+                        </li>
+                        <li>
+                            <span>Xuất sứ thương hiệu</span>
+                            <span class="li-tt-sp2">Nhật Bản</span>
+                        </li>
+                        <li>
+                            <span>Sản xuất tại</span>
+                            <span class="li-tt-sp2">Trung Quốc</span>
+                        </li>
+                         <li>
+                            <span>Bảo hành</span>
+                            <span class="li-tt-sp2">24 tháng</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeQuantity(button, change) {
+            // Tìm thẻ input gần nhất bên trong cùng cha
+            const input = button.parentElement.querySelector('#quantityInput');
+            let currentValue = parseInt(input.value);
+            const step = parseInt(input.getAttribute('step')) || 1;
+            const min = parseInt(input.getAttribute('min')) || 1;
+            const max = parseInt(input.getAttribute('max')) || 10;
+
+            // Tính giá trị mới
+            let newValue = currentValue + change * step;
+
+            // Đảm bảo giá trị nằm trong giới hạn
+            newValue = Math.max(min, Math.min(max, newValue));
+
+            // Cập nhật giá trị mới vào input
+            input.value = newValue;
+        }
+    </script>
+
+</body>
+</html>

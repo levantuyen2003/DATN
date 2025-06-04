@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meta</title>
+    <link rel="stylesheet" href="web/dist/css/style.css">
+    <link rel="stylesheet" href="web/libs/fontawesome-free-6.4.2-web/css/all.css">
+    <link rel="stylesheet" href="web/libs/bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.css">
+    <link rel="preconnect" href="web/https://fonts.googleapis.com">
+    <link rel="preconnect" href="web/https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="wapper">
+        <header>
+            <div class="header">
+                <div class="logo">
+                    <a href="page" class="text-white text-decoration-none">META</a>
+                </div>
+                <div class="search">
+                    <form method="get" th:action="@{/spSearch}">
+                        <div class="input-group">
+                            <input id="search1" name="name" type="text" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+                            <button id="search2" class="btn btn-primary" type="submit">Tìm kiếm</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="cart">
+                    <a href="#" class="text-white text-decoration-none"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+                    <div class="cart-box">
+                        <ul class="cart-items">
+                        <li>
+                            <img src="web/img/product1.jpg" alt="">
+                            <div class="info">
+                            <p>Sản phẩm A</p>
+                            <span>1 x 150.000đ</span>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="web/img/product2.jpg" alt="">
+                            <div class="info">
+                            <p>Sản phẩm B</p>
+                            <span>2 x 200.000đ</span>
+                            </div>
+                        </li>
+                        </ul>
+                        <div class="cart-total">Tổng: <strong>550.000đ</strong></div>
+                        <a href="#" class="btn-view-cart">Xem giỏ hàng</a>
+                    </div>
+                </div>
+                <div class="hotline">
+                    <a href="#" class="text-white text-decoration-none"> <i class="fa-solid fa-phone"></i>
+                    Hotline</a>
+                    <div class="hotline-box">
+                        <p><strong>1900 1234</strong></p>
+                        <p>Hỗ trợ 24/7</p>
+                        <p>(08:00 - 21:00)</p>
+                    </div>
+                </div>
+                <div class="login">
+                    <a href="#" class="text-white text-decoration-none"><i class="fa-solid fa-user-tie"></i>
+                    Đăng nhập</a>
+<!--                    <div class="login-box">-->
+<!--                        <ul>-->
+<!--                            <li><a href="#">Tra cứu đơn hàng</a></li>-->
+<!--                            <li><a href="#">Lịch sử mua hàng</a></li>-->
+<!--                            <li><a href="#">Lấy mã khuyến mãi</a></li>-->
+<!--                            <li><a href="#">Sản phẩm đã xem</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="container-center">
+                <div class="container-menu">
+                    <nav class="button-home">
+                        <div id="icon_home">
+                            <i class="fa-solid fa-bars"></i>
+                            <span class="title-menu">Danh mục sản phẩm</span>
+                        </div>
+                    <hr class="divider">
+                        <div class="menu_box">
+                            <ul class="menu-list">
+<!--                                <li th:each="obj : ${danhmucs}">-->
+<!--                                    <a href="@{/dienmay/' + ${obj.id}}">-->
+<!--                                        <i class="fa-solid fa-compass"></i>-->
+<!--                                        <span th:text="${obj.tendanhmuc}"></span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+                                <li>
+                                    <a href="/dienmay">
+                                        <i class="fa-solid fa-compass"></i>
+                                        <span>Điện máy</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/dogiadung">
+                                        <i class="fa-solid fa-compass"></i>
+                                        <span>Đồ gia dụng</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa-solid fa-compass"></i>
+                                        <span>Công cụ & Dụng cụ</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa-solid fa-compass"></i>
+                                        <span>Y tế & Sức khỏe</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa-solid fa-compass"></i>
+                                        <span>Thể thao & Ngoài trời</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="container-right">
+                    <div class="banner-top">
+                        <img src="web/images/Banner-990x280.png" width="880px" height="280px" alt="">
+                    </div>
+                    <div class="category" >
+                        <a href="#">
+                            <div class="category-item" th:each="obj : ${danhmucSPDTOS}">
+                                <div class="discount">
+
+                                </div>
+                                <div class="imgName">
+                                    <div class="imgCate">
+                                        <span>
+                                            <img th:src="${obj.hinhanhDM}" width="70px" height="70px" alt="">
+                                        </span>
+                                    </div>
+                                    <div class="nameCate">
+                                        <h3 th:text="${obj.tendanhmucSP}"></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-list-item">
+            <div class="dienmayCate">
+                <div class="box-cat">
+                    <div class="bc-title">
+                        <h2>
+                            <a href="/dienmay"> Điện máy - điện lạnh </a>
+                        </h2>
+                    </div>
+                    <div class="bc-all">
+                        <a href="">Xem tất cả <i class="fa-solid fa-angle-right"></i></a>
+                    </div>
+                </div>
+                <div class="box-cat-item">
+                    <a href="#">
+                        <div class="bc-item" th:each="obj : ${getProductsByCategory}">
+                            <div class="bc-imgCate">
+                                <span>
+                                    <img th:src="@{../assets/img/imgDMSP/{hinhanhDM}(hinhanhDM=${obj.hinhanhDM})}" width="120px" height="120px" alt="">
+                                </span>
+                            </div>
+                            <div class="bc-nameCate">
+                                <h3 th:text="${obj.tendanhmucSP}"></h3>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+            <div class="dienmay">
+                <div class="title">
+                    <h1>Điện máy nổi bật</h1>
+                    <a href="/dienmay">Xem tất cả sản phẩm</a>
+                </div>
+                <div class="dienmay-list">
+                    <ul class="list-unstyled">
+                        <li th:each="obj : ${sanpham1s}">
+                            <a th:href="@{'/Sp-Detail/' + ${obj.id}}">
+<!--                                <a th:href="@{'/Sp-Detail/' + ${obj.id}}">-->
+                                <div class="lazy-holder" >
+                                    <div class="lz-discount">-
+                                        <span th:text="${obj.sale}"></span>
+                                    </div>
+                                    <div class="lz-img ">
+                                        <img th:src="@{../assets/img/imgSP/{hinhanh}(hinhanh=${obj.hinhanh})}" width="200px" height="200px" alt="">
+                                    </div>
+                                    <div class="lz-name">
+                                        <h3 th:text="${obj.tensanpham}"></h3>
+                                    </div>
+                                    <div class="lz-brand">
+                                        <span th:text="${obj.thuonghieu}"></span>
+                                    </div>
+
+                                    <div class="abc d-flex align-items-center gap-2 ps-0 s">
+                                        <div class="lz-price">
+                                           <span class="text-danger fw-bold"
+                                                 th:text="${#numbers.formatDecimal(obj.gia, 0, 'COMMA', 0, 'POINT')} + ' đ'">
+    0 đ
+</span>
+                                        </div>
+                                        <div class="lz-rate">
+                                            <p class="text-warning mb-0" style="font-size: 11px;">
+                                                <i class="fas fa-star me-0"></i>
+                                                <i class="fas fa-star me-0"></i>
+                                                <i class="fas fa-star me-0"></i>
+                                                <i class="fas fa-star me-0"></i>
+                                                <i class="fas fa-star-half-alt me-0"></i>
+                                                <span class="text-muted ms-2">(50)</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="lz-price-old">
+                                        <span>
+                                            2.999.999 đ
+                                        </span>
+                                    </div>
+
+                                </div>
+                                </a>
+<!--                            </a>-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-list-item">
+            <div class="dienmayCate">
+                <div class="box-cat">
+                    <div class="bc-title">
+                        <h2>
+                            <a href=""> Đồ gia dụng </a>
+                        </h2>
+                    </div>
+                    <div class="bc-all">
+                        <a href="/dogiadung">Xem tất cả <i class="fa-solid fa-angle-right"></i></a>
+                    </div>
+                </div>
+                <div class="box-cat-item">
+                    <a href="#">
+                        <div class="bc-item" th:each="obj : ${getProductsByCategory2}">
+                            <div class="bc-imgCate">
+                                <span>
+                                    <img th:src="@{../assets/img/imgDMSP/{hinhanhDM}(hinhanhDM=${obj.hinhanhDM})}" width="120px" height="120px" alt="">
+                                </span>
+                            </div>
+                            <div class="bc-nameCate">
+                                <h3 th:text="${obj.tendanhmucSP}"></h3>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+            <div class="dienmay">
+                <div class="title">
+                    <h1>Đồ gia dụng nổi bật</h1>
+                    <a href="/dogiadung">Xem tất cả sản phẩm</a>
+                </div>
+                <div class="dienmay-list">
+                    <ul class="list-unstyled">
+                        <li th:each="obj : ${sanpham2s}">
+                            <a th:href="@{'/Sp-Detail/' + ${obj.id}}">
+                                <!--                                <a th:href="@{'/Sp-Detail/' + ${obj.id}}">-->
+                                <div class="lazy-holder" >
+                                    <div class="lz-discount">-
+                                        <span th:text="${obj.sale}"></span>
+                                    </div>
+                                    <div class="lz-img ">
+                                        <img th:src="@{../assets/img/imgSP/{hinhanh}(hinhanh=${obj.hinhanh})}" width="200px" height="200px" alt="">
+                                    </div>
+                                    <div class="lz-name">
+                                        <h3 th:text="${obj.tensanpham}"></h3>
+                                    </div>
+                                    <div class="lz-brand">
+                                        <span th:text="${obj.thuonghieu}"></span>
+                                    </div>
+
+                                    <div class="abc d-flex align-items-center gap-2 ps-0 s">
+                                        <div class="lz-price">
+                                            <span class="text-danger fw-bold"
+                                                  th:text="${#numbers.formatDecimal(obj.gia, 0, 'COMMA', 0, 'POINT')} + ' đ'">
+    0 đ
+</span>
+                                        </div>
+                                        <div class="lz-rate">
+                                            <p class="text-warning mb-0" style="font-size: 11px;">
+                                                <i class="fas fa-star me-0"></i>
+                                                <i class="fas fa-star me-0"></i>
+                                                <i class="fas fa-star me-0"></i>
+                                                <i class="fas fa-star me-0"></i>
+                                                <i class="fas fa-star-half-alt me-0"></i>
+                                                <span class="text-muted ms-2">(50)</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="lz-price-old">
+                                        <span>
+                                            2.999.999 đ
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </a>
+                            <!--                            </a>-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+<!--         <div class="container-list-item">-->
+<!--            <div class="dienmayCate">-->
+<!--                <div class="box-cat">-->
+<!--                    <div class="bc-title">-->
+<!--                        <h2>-->
+<!--                            <a href=""> Công cụ & Dụng cụ </a>-->
+<!--                        </h2>-->
+<!--                    </div>-->
+<!--                    <div class="bc-all">-->
+<!--                        <a href="">Xem tất cả <i class="fa-solid fa-angle-right"></i></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="box-cat-item">-->
+<!--                    <a href="#">-->
+<!--                        <div class="bc-item">-->
+<!--                            <div class="bc-imgCate">-->
+<!--                                <span>-->
+<!--                                    <img src="imgcate/c448-210x210.jpg" width="120px" height="120px" alt="">-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="bc-nameCate">-->
+<!--                                <h3>Quạt, máy làm mát</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="#">-->
+<!--                        <div class="bc-item">-->
+<!--                            <div class="bc-imgCate">-->
+<!--                                <span>-->
+<!--                                    <img src="imgcate/c448-210x210.jpg" width="120px" height="120px" alt="">-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="bc-nameCate">-->
+<!--                                <h3>Quạt, máy làm mát</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="#">-->
+<!--                        <div class="bc-item">-->
+<!--                            <div class="bc-imgCate">-->
+<!--                                <span>-->
+<!--                                    <img src="imgcate/c448-210x210.jpg" width="120px" height="120px" alt="">-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="bc-nameCate">-->
+<!--                                <h3>Quạt, máy làm mát</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="#">-->
+<!--                        <div class="bc-item">-->
+<!--                            <div class="bc-imgCate">-->
+<!--                                <span>-->
+<!--                                    <img src="imgcate/c448-210x210.jpg" width="120px" height="120px" alt="">-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="bc-nameCate">-->
+<!--                                <h3>Quạt, máy làm mát</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="#">-->
+<!--                        <div class="bc-item">-->
+<!--                            <div class="bc-imgCate">-->
+<!--                                <span>-->
+<!--                                    <img src="imgcate/c448-210x210.jpg" width="120px" height="120px" alt="">-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="bc-nameCate">-->
+<!--                                <h3>Quạt, máy làm mát</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="#">-->
+<!--                        <div class="bc-item">-->
+<!--                            <div class="bc-imgCate">-->
+<!--                                <span>-->
+<!--                                    <img src="imgcate/c448-210x210.jpg" width="120px" height="120px" alt="">-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="bc-nameCate">-->
+<!--                                <h3>Quạt, máy làm mát</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="#">-->
+<!--                        <div class="bc-item">-->
+<!--                            <div class="bc-imgCate">-->
+<!--                                <span>-->
+<!--                                    <img src="imgcate/c448-210x210.jpg" width="120px" height="120px" alt="">-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="bc-nameCate">-->
+<!--                                <h3>Quạt, máy làm mát</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="#">-->
+<!--                        <div class="bc-item">-->
+<!--                            <div class="bc-imgCate">-->
+<!--                                <span>-->
+<!--                                    <img src="imgcate/c448-210x210.jpg" width="120px" height="120px" alt="">-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="bc-nameCate">-->
+<!--                                <h3>Quạt, máy làm mát</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="#">-->
+<!--                        <div class="bc-item">-->
+<!--                            <div class="bc-imgCate">-->
+<!--                                <span>-->
+<!--                                    <img src="imgcate/c448-210x210.jpg" width="120px" height="120px" alt="">-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="bc-nameCate">-->
+<!--                                <h3>Quạt, máy làm mát</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="#">-->
+<!--                        <div class="bc-item">-->
+<!--                            <div class="bc-imgCate">-->
+<!--                                <span>-->
+<!--                                    <img src="imgcate/c448-210x210.jpg" width="120px" height="120px" alt="">-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="bc-nameCate">-->
+<!--                                <h3>Quạt, máy làm mát</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="#">-->
+<!--                        <div class="bc-item">-->
+<!--                            <div class="bc-imgCate">-->
+<!--                                <span>-->
+<!--                                    <img src="imgcate/c448-210x210.jpg" width="120px" height="120px" alt="">-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="bc-nameCate">-->
+<!--                                <h3>Quạt, máy làm mát</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="#">-->
+<!--                        <div class="bc-item">-->
+<!--                            <div class="bc-imgCate">-->
+<!--                                <span>-->
+<!--                                    <img src="imgcate/c448-210x210.jpg" width="120px" height="120px" alt="">-->
+<!--                                </span>-->
+<!--                            </div>-->
+<!--                            <div class="bc-nameCate">-->
+<!--                                <h3>Quạt, máy làm mát</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="dienmay">-->
+<!--                <div class="title">-->
+<!--                    <h1>Công cụ & dụng cụ nổi bật</h1>-->
+<!--                    <a href="#">Xem tất cả sản phẩm</a>-->
+<!--                </div>-->
+<!--                <div class="dienmay-list">-->
+<!--                    <ul class="list-unstyled">-->
+<!--                        <li>-->
+<!--                            <a href="product-detail.html">-->
+<!--                                <div class="lazy-holder">-->
+<!--                                    <div class="lz-discount">-->
+<!--                                        <span>-20%</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-img ">-->
+<!--                                        <img src="img/dh.jpg" width="200px" height="200px" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-name">-->
+<!--                                            <h3>Nồi cơm điện</h3>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-brand">-->
+<!--                                        <span>Casper</span>-->
+<!--                                    </div>-->
+<!--                                -->
+<!--                                    <div class="abc d-flex align-items-center gap-2 ps-0 s">-->
+<!--                                        <div class="lz-price">-->
+<!--                                            <span>1.999.999 đ</span>-->
+<!--                                        </div>-->
+<!--                                        <div class="lz-rate">-->
+<!--                                            <p class="text-warning mb-0" style="font-size: 11px;">-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star-half-alt me-0"></i>-->
+<!--                                            <span class="text-muted ms-2">(50)</span>-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-price-old">-->
+<!--                                        <span>-->
+<!--                                            2.999.999 đ-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    -->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="">-->
+<!--                                <div class="lazy-holder">-->
+<!--                                    <div class="lz-discount">-->
+<!--                                        <span>-20%</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-img ">-->
+<!--                                        <img src="img/dh.jpg" width="200px" height="200px" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-name">-->
+<!--                                            <h3>Nồi cơm điện</h3>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-brand">-->
+<!--                                        <span>Casper</span>-->
+<!--                                    </div>-->
+<!--                                -->
+<!--                                    <div class="abc d-flex align-items-center gap-2 ps-0 s">-->
+<!--                                        <div class="lz-price">-->
+<!--                                            <span>1.999.999 đ</span>-->
+<!--                                        </div>-->
+<!--                                        <div class="lz-rate">-->
+<!--                                            <p class="text-warning mb-0" style="font-size: 11px;">-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star-half-alt me-0"></i>-->
+<!--                                            <span class="text-muted ms-2">(50)</span>-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-price-old">-->
+<!--                                        <span>-->
+<!--                                            2.999.999 đ-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    -->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="">-->
+<!--                                <div class="lazy-holder">-->
+<!--                                    <div class="lz-discount">-->
+<!--                                        <span>-20%</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-img ">-->
+<!--                                        <img src="img/dh.jpg" width="200px" height="200px" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-name">-->
+<!--                                            <h3>Nồi cơm điện</h3>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-brand">-->
+<!--                                        <span>Casper</span>-->
+<!--                                    </div>-->
+<!--                                -->
+<!--                                    <div class="abc d-flex align-items-center gap-2 ps-0 s">-->
+<!--                                        <div class="lz-price">-->
+<!--                                            <span>1.999.999 đ</span>-->
+<!--                                        </div>-->
+<!--                                        <div class="lz-rate">-->
+<!--                                            <p class="text-warning mb-0" style="font-size: 11px;">-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star-half-alt me-0"></i>-->
+<!--                                            <span class="text-muted ms-2">(50)</span>-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-price-old">-->
+<!--                                        <span>-->
+<!--                                            2.999.999 đ-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    -->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="">-->
+<!--                                <div class="lazy-holder">-->
+<!--                                    <div class="lz-discount">-->
+<!--                                        <span>-20%</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-img ">-->
+<!--                                        <img src="img/dh.jpg" width="200px" height="200px" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-name">-->
+<!--                                            <h3>Nồi cơm điện</h3>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-brand">-->
+<!--                                        <span>Casper</span>-->
+<!--                                    </div>-->
+<!--                                -->
+<!--                                    <div class="abc d-flex align-items-center gap-2 ps-0 s">-->
+<!--                                        <div class="lz-price">-->
+<!--                                            <span>1.999.999 đ</span>-->
+<!--                                        </div>-->
+<!--                                        <div class="lz-rate">-->
+<!--                                            <p class="text-warning mb-0" style="font-size: 11px;">-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star-half-alt me-0"></i>-->
+<!--                                            <span class="text-muted ms-2">(50)</span>-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-price-old">-->
+<!--                                        <span>-->
+<!--                                            2.999.999 đ-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    -->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="">-->
+<!--                                <div class="lazy-holder">-->
+<!--                                    <div class="lz-discount">-->
+<!--                                        <span>-20%</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-img ">-->
+<!--                                        <img src="img/dh.jpg" width="200px" height="200px" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-name">-->
+<!--                                            <h3>Nồi cơm điện</h3>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-brand">-->
+<!--                                        <span>Casper</span>-->
+<!--                                    </div>-->
+<!--                                -->
+<!--                                    <div class="abc d-flex align-items-center gap-2 ps-0 s">-->
+<!--                                        <div class="lz-price">-->
+<!--                                            <span>1.999.999 đ</span>-->
+<!--                                        </div>-->
+<!--                                        <div class="lz-rate">-->
+<!--                                            <p class="text-warning mb-0" style="font-size: 11px;">-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star-half-alt me-0"></i>-->
+<!--                                            <span class="text-muted ms-2">(50)</span>-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-price-old">-->
+<!--                                        <span>-->
+<!--                                            2.999.999 đ-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    -->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="">-->
+<!--                                <div class="lazy-holder">-->
+<!--                                    <div class="lz-discount">-->
+<!--                                        <span>-20%</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-img ">-->
+<!--                                        <img src="img/dh.jpg" width="200px" height="200px" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-name">-->
+<!--                                            <h3>Nồi cơm điện</h3>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-brand">-->
+<!--                                        <span>Casper</span>-->
+<!--                                    </div>-->
+<!--                                -->
+<!--                                    <div class="abc d-flex align-items-center gap-2 ps-0 s">-->
+<!--                                        <div class="lz-price">-->
+<!--                                            <span>1.999.999 đ</span>-->
+<!--                                        </div>-->
+<!--                                        <div class="lz-rate">-->
+<!--                                            <p class="text-warning mb-0" style="font-size: 11px;">-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star-half-alt me-0"></i>-->
+<!--                                            <span class="text-muted ms-2">(50)</span>-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-price-old">-->
+<!--                                        <span>-->
+<!--                                            2.999.999 đ-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    -->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="">-->
+<!--                                <div class="lazy-holder">-->
+<!--                                    <div class="lz-discount">-->
+<!--                                        <span>-20%</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-img ">-->
+<!--                                        <img src="img/dh.jpg" width="200px" height="200px" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-name">-->
+<!--                                            <h3>Nồi cơm điện</h3>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-brand">-->
+<!--                                        <span>Casper</span>-->
+<!--                                    </div>-->
+<!--                                -->
+<!--                                    <div class="abc d-flex align-items-center gap-2 ps-0 s">-->
+<!--                                        <div class="lz-price">-->
+<!--                                            <span>1.999.999 đ</span>-->
+<!--                                        </div>-->
+<!--                                        <div class="lz-rate">-->
+<!--                                            <p class="text-warning mb-0" style="font-size: 11px;">-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star me-0"></i>-->
+<!--                                            <i class="fas fa-star-half-alt me-0"></i>-->
+<!--                                            <span class="text-muted ms-2">(50)</span>-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="lz-price-old">-->
+<!--                                        <span>-->
+<!--                                            2.999.999 đ-->
+<!--                                        </span>-->
+<!--                                    </div>-->
+<!--                                    -->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </li>-->
+
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <hr>
+        <footer>
+            <div class="brand-ig">
+                <div class="bd-title">
+                    <h2> THƯƠNG HIỆU NỔI BẬT </h2>
+                </div>
+                <div class="thuonghieunoibat">
+                    <a href="#">
+                        <img src="web/imgBrand/s.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/f.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/t.jpg" alt="">
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/se.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/m.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/sh.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/ca.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/b.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/vi.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/pa.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/sa.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/lg.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/chi.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/phi.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="slogan-main">
+                <div class="sm-list">
+                    <a href="">
+                        <img src="web/imgBrand/dich-vu-uy-tin-icon.svg" width="42px" height="47px" alt="">
+                        Dịch vụ giao hàng uy tín
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/doi-tra-hang-icon.svg" width="42px" height="47px" alt="">
+                        Đổi trả trong vòng 7 ngày
+                    </a>
+                    <a href="">
+                        <img src="web/imgBrand/giao-hang-toan-quoc-icon.svg" width="42px" height="47px" alt="">
+                        Giao hàng toàn quốc
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="ft-end">
+                <div class="ftt1">
+                    <div >Công ty cổ phần mạng trực tuyến META</div>
+                    <div >Trên 18 năm Uy tín cung cấp Dịch vụ Bán hàng & Thu tiền tại nhà toàn quốc</div>
+                    <div >
+                    Giấy chứng nhận ĐKDN số <b>0102196915</b> do Sở KH&ĐT TP. Hà Nội cấp ngày 29/03/2007.                        
+                </div>
+                <div class="ftt2">
+                    <span><strong>HÀ NỘI:</strong>  56 Duy Tân, P. Dịch Vọng Hậu, Q. Cầu Giấy</span>
+                    <span><strong>- Điện thoại:</strong><a href="tel:02435686969"> (024) 3568 6969</a></span>
+                    <div><b>Email:</b> info@meta.vn</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</body>
+</html>

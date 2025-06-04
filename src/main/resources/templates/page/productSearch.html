@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm kiếm sản phẩm</title>
+  <link rel="stylesheet" href="web/dist/css/style.css">
+  <link rel="stylesheet" href="web/libs/fontawesome-free-6.4.2-web/css/all.css">
+  <link rel="stylesheet" href="web/libs/bootstrap-5.3.2-dist/bootstrap-5.3.2-dist/css/bootstrap.css">
+  <link rel="preconnect" href="web/https://fonts.googleapis.com">
+  <link rel="preconnect" href="web/https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="wapper">
+    <header>
+      <div class="header">
+        <div class="logo">
+          <a href="page" class="text-white text-decoration-none">META</a>
+        </div>
+        <div class="search">
+          <div class="input-group">
+            <input id="search1" type="text" class="form-control" placeholder="Tìm kiếm...">
+            <button id="search2" class="btn btn-primary" type="button">Tìm kiếm</button>
+          </div>
+        </div>
+        <div class="cart">
+          <a href="#" class="text-white text-decoration-none"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+          <div class="cart-box">
+            <ul class="cart-items">
+              <li>
+                <img src="web/img/product1.jpg" alt="">
+                <div class="info">
+                  <p>Sản phẩm A</p>
+                  <span>1 x 150.000đ</span>
+                </div>
+              </li>
+              <li>
+                <img src="web/img/product2.jpg" alt="">
+                <div class="info">
+                  <p>Sản phẩm B</p>
+                  <span>2 x 200.000đ</span>
+                </div>
+              </li>
+            </ul>
+            <div class="cart-total">Tổng: <strong>550.000đ</strong></div>
+            <a href="#" class="btn-view-cart">Xem giỏ hàng</a>
+          </div>
+        </div>
+        <div class="hotline">
+          <a href="#" class="text-white text-decoration-none"> <i class="fa-solid fa-phone"></i>
+            Hotline</a>
+          <div class="hotline-box">
+            <p><strong>1900 1234</strong></p>
+            <p>Hỗ trợ 24/7</p>
+            <p>(08:00 - 21:00)</p>
+          </div>
+        </div>
+        <div class="login">
+          <a href="#" class="text-white text-decoration-none"><i class="fa-solid fa-user-tie"></i>
+            Đăng nhập</a>
+          <!--                    <div class="login-box">-->
+          <!--                        <ul>-->
+          <!--                            <li><a href="#">Tra cứu đơn hàng</a></li>-->
+          <!--                            <li><a href="#">Lịch sử mua hàng</a></li>-->
+          <!--                            <li><a href="#">Lấy mã khuyến mãi</a></li>-->
+          <!--                            <li><a href="#">Sản phẩm đã xem</a></li>-->
+          <!--                        </ul>-->
+          <!--                    </div>-->
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="container-center">
+        <div class="container-menu">
+          <nav class="button-home">
+            <div id="icon_home">
+              <i class="fa-solid fa-bars"></i>
+              <span class="title-menu">Danh mục sản phẩm</span>
+            </div>
+            <hr class="divider">
+            <div class="menu_box">
+              <ul class="menu-list">
+                <!--                                <li th:each="obj : ${danhmucs}">-->
+                <!--                                    <a href="@{/dienmay/' + ${obj.id}}">-->
+                <!--                                        <i class="fa-solid fa-compass"></i>-->
+                <!--                                        <span th:text="${obj.tendanhmuc}"></span>-->
+                <!--                                    </a>-->
+                <!--                                </li>-->
+                <li>
+                  <a href="/dienmay">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>Điện máy</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/dogiadung">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>Đồ gia dụng</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>Công cụ & Dụng cụ</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>Y tế & Sức khỏe</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>Thể thao & Ngoài trời</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="container-right">
+          <div class="banner-top">
+            <img src="web/images/Banner-990x280.png" width="880px" height="280px" alt="">
+          </div>
+          <div class="category" >
+            <a href="#">
+              <div class="category-item" th:each="obj : ${danhmucSPDTOS}">
+                <div class="discount">
+
+                </div>
+                <div class="imgName">
+                  <div class="imgCate">
+                                        <span>
+                                            <img th:src="${obj.hinhanhDM}" width="70px" height="70px" alt="">
+                                        </span>
+                  </div>
+                  <div class="nameCate">
+                    <h3 th:text="${obj.tendanhmucSP}"></h3>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table>
+      <thead>
+      <tr>
+        <th>Tên sản phẩm</th>
+        <th>Hình ảnh</th>
+        <th>Thương hiệu</th>
+        <th>Giá</th>
+        <th>Giá mới</th>
+        <th>Sale</th>
+        <th>Hot</th>
+        <th>Danh mục</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="sp : ${sanphams}">
+        <td th:text="${sp.tensanpham}"></td>
+        <td><img th:src="@{'/images/' + ${sp.hinhanh}}" width="80"/></td>
+        <td th:text="${sp.thuonghieu}"></td>
+        <td th:text="${sp.gia}"></td>
+        <td th:text="${sp.giamoi}"></td>
+        <td th:text="${sp.sale}"></td>
+        <td th:text="${sp.hot ? 'Có' : 'Không'}"></td>
+        <td th:text="${sp.danhmucSP.ten}"></td>
+      </tr>
+      <tr th:if="${#lists.isEmpty(sanphams)}">
+        <td colspan="8">Không tìm thấy sản phẩm nào.</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
